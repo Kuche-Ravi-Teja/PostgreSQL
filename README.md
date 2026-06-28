@@ -7,4 +7,4 @@ A comprehensive collection of PostgreSQL notes with practicing of database and s
   - Database
   - Syntax
 
-Refer the topics to get the detailed understanding of PostgreSQL. 
+Refer the topics to get the detailed understanding of PostgreSQL.
