@@ -45,3 +45,78 @@ In the beginning, PostgreSQL ran on UNIX platforms, but now it can run on variou
   - Financial Systems : Supports banking and financial applications with strong transaction management.
   - Geographic Information Systems (GIS) : Handles spatial and location-based data using PostGIS.
   - Web Applications : Powers dynamic websites and web services.
+
+## <u> Datatypes of PostgreSQL <u/>
+
+PostgreSQL has one of the richest sets of native data types available in the database world. 
+
+Here is a breakdown of the most common data types you'll actually use, explained simply.
+
+### 1. Text Data Types (For Words and Strings)
+
+  - VARCHAR(n) : Variable-length character string with a limit of n characters. Perfect when you have an upper limit but lengths vary.
+
+  - TEXT : Unlimited length string. Use this when you don't want to arbitrary cap how much someone can type (like blog posts or comments). In PostgreSQL, TEXT is   just as fast as VARCHAR.
+
+  - Example :
+
+        username VARCHAR(50),  -- e.g., 'johndoe123'
+        bio TEXT               -- e.g., 'A long paragraph about my life...'
+
+    
+### 2. Numeric Data Types (For Numbers)
+
+  - INT or INTEGER : For whole numbers (no decimals). Ranges from -2 billion to +2 billion.
+
+  - BIGINT : For massive whole numbers (like global IDs or system timestamps).
+
+  - NUMERIC(precision, scale) : For exact math, like money. You tell it the total number of digits (precision) and how many go after the decimal (scale).
+
+  - REAL / DOUBLE PRECISION : For floating-point numbers (decimals where minor rounding errors are fine, like scientific data or GPS coordinates).
+
+  - Example :
+
+        age INT,                      -- e.g., 29
+        account_balance NUMERIC(10,2) -- e.g., 1250.50 (Max 10 digits total, 2 after decimal)
+
+    
+### 3. Date and Time Data Types
+
+  - DATE : Just the calendar date (no time).
+
+  - TIMESTAMP : Date and time combined.
+
+  - TIMESTAMPTZ : Date, time, and time zone.
+
+Pro tip: Always use this for global apps so your servers don't get confused about when something happened.
+
+  - Example :
+
+        birth_date DATE,           -- e.g., '1995-05-15'
+        created_at TIMESTAMPTZ     -- e.g., '2026-06-30 10:00:00+00'
+
+    
+### 4. Boolean Data Type (True/False)
+
+  - BOOLEAN : Holds exactly three states: TRUE, FALSE, or NULL (unknown).
+
+  - Example :
+
+        is_active BOOLEAN          -- e.g., TRUE
+
+    
+### 5. Advanced Data Types
+
+PostgreSQL stands out because it easily handles complex data without needing a separate NoSQL database.
+
+  - JSONB : Stores JSON data in a decomposed, binary format. It allows you to index and query inside raw JSON data fast.
+
+  - UUID : Universally Unique Identifier. Great for IDs instead of sequential numbers (1, 2, 3...) so hackers can't guess your data size.
+
+  - ARRAY : Allows a column to hold a list of values.
+
+  - Example :
+
+        user_id UUID,              -- e.g., 'a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a11'
+        preferences JSONB,         -- e.g., '{"theme": "dark", "notifications": true}'
+        tags TEXT[]                -- e.g., '{"coding", "databases", "sql"}'
